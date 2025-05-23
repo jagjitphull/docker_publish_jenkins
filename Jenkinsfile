@@ -64,7 +64,7 @@ pipeline {
                                                    usernameVariable: 'DOCKER_USER',
                                                    passwordVariable: 'DOCKER_PASS')]) {
                     // Use --password-stdin for better security than passing password on command line
-                    sh "echo \"${DOCKER_PASS}\" | docker login -u \"${DOCKER_USER}\" --password-stdin"
+                    sh 'HOME=/root echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin'
                 }
                 echo "Logged into Docker Hub successfully."
             }
