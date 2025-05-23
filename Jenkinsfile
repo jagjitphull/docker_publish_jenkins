@@ -7,7 +7,7 @@ pipeline {
     agent {
         docker {
             image 'docker:latest' // Uses an official Docker image which has Docker CLI
-            args '-v /var/run/docker.sock:/var/run/docker.sock' // Mount Docker socket
+            args '-v /var/run/docker.sock:/var/run/docker.sock -u root' // Mount Docker socket
             // If your Jenkins user inside the container needs specific UID/GID for Docker socket access:
             // args '-v /var/run/docker.sock:/var/run/docker.sock -u root' // Or map to a user with docker group access
         }
