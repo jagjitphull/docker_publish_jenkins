@@ -7,7 +7,7 @@ pipeline {
     agent {
         docker {
             image 'docker:latest' // Uses an official Docker image which has Docker CLI
-            args '-v /var/run/docker.sock:/var/run/docker.sock-u root' // Mount Docker socket
+            args '-v /var/run/docker.sock:/var/run/docker.sock -u root' // Mount Docker socket
             // If your Jenkins user inside the container needs specific UID/GID for Docker socket access:
             // args '-v /var/run/docker.sock:/var/run/docker.sock -u root' // Or map to a user with docker group access
         }
@@ -17,7 +17,7 @@ pipeline {
     environment {
         // IMPORTANT: Replace 'yourdockerhubusername' with your actual Docker Hub username.
         // IMPORTANT: Replace 'yourimagename' with your desired image name.
-        IMAGE_NAME = "jpneo/myapp:latest"
+        IMAGE_NAME = "jpneo/myflaskapp:latest"
         // ID of the Docker Hub credentials stored in Jenkins (see Step 1)
         DOCKERHUB_CREDENTIALS_ID = "dockerhub-credentials"
     }
